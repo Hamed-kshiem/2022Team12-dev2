@@ -1,6 +1,7 @@
 package eu.utils;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -129,9 +130,8 @@ public final class BuggyUtils {
      * @return the rounded value
      */
     public static double round(final double roundMe, final int decimalPlace) {
-        // Multiply the number to be rounded and then divide the rounded number
-        final double multiple = roundMe * Math.pow(10, decimalPlace);
-        return Math.round(multiple) / Math.pow(10, decimalPlace);
+    	// Use BigDecimal for rounding double values to avoid problems with machine precision
+        return BigDecimal.valueOf(roundMe).setScale(decimalPlace, RoundingMode.HALF_UP).doubleValue();
     }
 
     /**
