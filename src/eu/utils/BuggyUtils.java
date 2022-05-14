@@ -248,7 +248,7 @@ public final class BuggyUtils {
          * Makes sure new persons have default values by throwing
          * {@link IllegalStateException}s if they don't.
          */
-        protected void ensureNewPersonHasDefaultValues() {
+        private void ensureNewPersonHasDefaultValues() {
             if (!DEFAULT_NAME.equals(name)) {
                 throw new IllegalStateException(
                         "New persons should have the default name of: "
@@ -277,6 +277,7 @@ public final class BuggyUtils {
 
         private Student(final String name, final int age,
                 final String matriculationNr) {
+        	this.ensureNewStudentHasDefaultValues();
             this.name = name;
             this.age = age;
             this.matriculationNr = matriculationNr;
@@ -288,10 +289,7 @@ public final class BuggyUtils {
             return newStudent;
         }
 
-        @Override
-        protected void ensureNewPersonHasDefaultValues() {
-            // Check the inherited fields
-            super.ensureNewPersonHasDefaultValues();
+        private void ensureNewStudentHasDefaultValues() {
             // Check the student's fields
             if (!subjects.isEmpty()) {
                 throw new IllegalStateException(
