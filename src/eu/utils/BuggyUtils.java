@@ -194,6 +194,24 @@ public final class BuggyUtils {
         }
 
         @Override
+        public boolean equals(Object obj) {
+            if(obj == this)
+                return true;
+            if(!(obj instanceof KeyValue<?,?>))
+                return false;
+            KeyValue<?,?> other = (KeyValue<?,?>) obj;
+            return key.equals(other.key)
+                    && value.equals(other.value);
+        }
+
+        @Override
+        public int hashCode() {
+            final int PRIME = 31;
+            return PRIME * (getKey() == null ? 0 : getKey().hashCode())
+                    + (getValue() == null ? 0 : getValue().hashCode());
+        }
+
+        @Override
         public String toString() {
             return "key: " + key + " value: " + value;
         }
