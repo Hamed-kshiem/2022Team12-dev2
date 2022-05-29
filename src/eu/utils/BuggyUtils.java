@@ -62,7 +62,7 @@ public final class BuggyUtils {
                 final Integer intOfFirstList = firstList.get(i);
                 final Integer intOfSecondList = secondList.get(i);
                 // Compare integers for equality
-                if (!Objects.equals(intOfFirstList, intOfSecondList)) {
+                if (intOfFirstList != intOfSecondList) {
                     // These two values differ -> the lists are not equal
                     listsAreEqual = false;
                     break;
@@ -106,7 +106,7 @@ public final class BuggyUtils {
             hex = null;
         } else {
             // Color names are all lower case in the map
-            final String colorNameLower = colorName.toLowerCase(Locale.ROOT);
+            final String colorNameLower = colorName.toLowerCase();
             hex = COLOR_NAME_TO_HEX_MAP.get(colorNameLower);
         }
         return hex;
