@@ -106,7 +106,7 @@ public final class BuggyUtils {
             hex = null;
         } else {
             // Color names are all lower case in the map
-            final String colorNameLower = colorName.toLowerCase();
+            final String colorNameLower = colorName.toLowerCase(Locale.ROOT);
             hex = COLOR_NAME_TO_HEX_MAP.get(colorNameLower);
         }
         return hex;
