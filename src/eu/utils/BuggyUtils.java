@@ -2,10 +2,7 @@ package eu.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Each of these public methods and the inner classes are somehow flawed and
@@ -62,7 +59,7 @@ public final class BuggyUtils {
                 final Integer intOfFirstList = firstList.get(i);
                 final Integer intOfSecondList = secondList.get(i);
                 // Compare integers for equality
-                if (intOfFirstList != intOfSecondList) {
+                if (!Objects.equals(intOfFirstList, intOfSecondList)) {
                     // These two values differ -> the lists are not equal
                     listsAreEqual = false;
                     break;
@@ -106,7 +103,7 @@ public final class BuggyUtils {
             hex = null;
         } else {
             // Color names are all lower case in the map
-            final String colorNameLower = colorName.toLowerCase();
+            final String colorNameLower = colorName.toLowerCase(Locale.ROOT);
             hex = COLOR_NAME_TO_HEX_MAP.get(colorNameLower);
         }
         return hex;
