@@ -144,7 +144,7 @@ public final class BuggyUtils {
     public static BigDecimal sum(final double... summands) {
         BigDecimal sum = BigDecimal.ZERO;
         for (final double summand : summands) {
-            sum = sum.add(new BigDecimal(summand));
+        	 sum = sum.add(BigDecimal.valueOf(summand));
         }
         return sum;
     }
