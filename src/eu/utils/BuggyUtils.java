@@ -62,7 +62,7 @@ public final class BuggyUtils {
                 final Integer intOfFirstList = firstList.get(i);
                 final Integer intOfSecondList = secondList.get(i);
                 // Compare integers for equality
-                if (intOfFirstList != intOfSecondList) {
+                if (!Objects.equals(intOfFirstList, intOfSecondList)) {
                     // These two values differ -> the lists are not equal
                     listsAreEqual = false;
                     break;
